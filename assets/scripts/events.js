@@ -5,7 +5,7 @@ let winner = ''
 
 let currentPlayer = playerX
 
-const game = ['', '', '', '', '', '', '', '', '']
+let game = ['', '', '', '', '', '', '', '', '']
 
 const playGame = function (event) {
   event.preventDefault()
@@ -86,8 +86,19 @@ const checkForWinner = function () {
   }
 }
 
+const playAgain = function (event) {
+  event.preventDefault()
+  console.log('I think this is working')
+  $('.square').text('')
+  game = ['', '', '', '', '', '', '', '', '']
+  winner = ''
+  currentPlayer = playerX
+  console.log('Game is ', game)
+}
+
 const addHandlers = function () {
   $('.square').on('click', playGame)
+  $('#play-again').on('submit', playAgain)
 }
 
 module.exports = {
