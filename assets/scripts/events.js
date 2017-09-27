@@ -15,12 +15,12 @@ const playGame = function (event) {
     if (currentPlayer === playerX) {
       $(data).text('X')
       game[id] = 'X'
-      console.log(game)
     } else if (currentPlayer === playerO) {
       $(data).text('O')
       game[id] = 'O'
     }
-  } checkForWinner()
+  } console.log(game)
+  checkForWinner()
   switchPlayer()
 }
 
