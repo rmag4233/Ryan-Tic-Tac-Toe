@@ -26,7 +26,7 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  if (store.user === undefined) {
+  if (store.user === undefined || null) {
     $('#passwordChange').text('You must sign in before you can change your password.')
   } else if (data.passwords.old.length === 0) {
     $('#passwordChange').text('Please enter your current password.')
@@ -41,10 +41,18 @@ const onChangePassword = function (event) {
   }
 }
 
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
+  $('#sign-out').on('submit', onSignOut)
 }
 
 module.exports = {

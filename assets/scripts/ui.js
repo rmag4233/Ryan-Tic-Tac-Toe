@@ -34,11 +34,26 @@ const changePasswordFailure = function (error) {
   $('#passwordChange').text('Please try again.')
 }
 
+const signOutSuccess = function () {
+  console.log('Signed out successfully!')
+  $('#signOut').text('You have been logged out')
+  store.user = null
+  console.log(store.user)
+}
+
+const signOutFailure = function (error) {
+  console.error(error)
+  $('#signOut').text('Please try again.')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
   signInFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  signOutSuccess,
+  signOutFailure
+
 }

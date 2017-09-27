@@ -13,7 +13,7 @@ const playGame = function (event) {
   event.preventDefault()
   const data = event.target
   const id = data.id
-  if (store.user !== undefined) {
+  if (store.user !== undefined && store.user !== null) {
     if (winner === '') {
       if (game[id].length < 1) {
         if (currentPlayer === playerX) {
