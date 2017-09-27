@@ -15,6 +15,7 @@ const signInSuccess = function (data) {
   console.log('Success!')
   console.log(data)
   $('#signInMessage').text('Signed in as ' + data.user.email)
+  $('#logIn').text('Good luck!')
   store.user = data.user
 }
 

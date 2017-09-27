@@ -1,4 +1,6 @@
 'use strict'
+const store = require('./store')
+
 const playerX = 'X'
 const playerO = 'O'
 let winner = ''
@@ -11,14 +13,17 @@ const playGame = function (event) {
   event.preventDefault()
   const data = event.target
   const id = data.id
-  if (winner === '') {
-    if (game[id].length < 1) {
-      if (currentPlayer === playerX) {
-        $(data).text('X')
-        game[id] = 'X'
-      } else if (currentPlayer === playerO) {
-        $(data).text('O')
-        game[id] = 'O'
+  console.log(store.user)
+  if (store.user !== undefined) {
+    if (winner === '') {
+      if (game[id].length < 1) {
+        if (currentPlayer === playerX) {
+          $(data).text('X')
+          game[id] = 'X'
+        } else if (currentPlayer === playerO) {
+          $(data).text('O')
+          game[id] = 'O'
+        }
       }
     }
   } console.log(game)
@@ -27,7 +32,7 @@ const playGame = function (event) {
 }
 
 const switchPlayer = function () {
-  if (winner === '') {
+  if (winner === '' && store.user !== undefined) {
     if (currentPlayer === playerX) {
       currentPlayer = playerO
     } else currentPlayer = playerX
@@ -37,7 +42,7 @@ const switchPlayer = function () {
 
 const checkForWinner = function () {
   switch (true) {
-    case (game[0] === game[1] && game[1] === game[2] && game[0] === game[2]):
+    case (game[0] === game[1] && game[1] === game[2] && game[0] === game[2] && game[0] !== ''):
       winner = game[0]
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
       console.log('Winner is ', winner)
