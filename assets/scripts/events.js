@@ -11,13 +11,15 @@ const playGame = function (event) {
   event.preventDefault()
   const data = event.target
   const id = data.id
-  if (game[id].length < 1) {
-    if (currentPlayer === playerX) {
-      $(data).text('X')
-      game[id] = 'X'
-    } else if (currentPlayer === playerO) {
-      $(data).text('O')
-      game[id] = 'O'
+  if (winner === '') {
+    if (game[id].length < 1) {
+      if (currentPlayer === playerX) {
+        $(data).text('X')
+        game[id] = 'X'
+      } else if (currentPlayer === playerO) {
+        $(data).text('O')
+        game[id] = 'O'
+      }
     }
   } console.log(game)
   checkForWinner()
