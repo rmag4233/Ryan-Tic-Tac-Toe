@@ -15,7 +15,7 @@ const onSignUp = function (event) {
 }
 
 const authHandlers = function () {
-  $('#sign-up').on('click', onSignUp)
+  $('#sign-up').on('submit', onSignUp)
 }
 
 module.exports = {
