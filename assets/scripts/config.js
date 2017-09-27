@@ -2,8 +2,8 @@
 
 const config = {
   apiOrigins: {
-    development: 'http://tic-tac-toe.wdibos.com',
-    production: 'http://tic-tac-toe.wdibos.com'
+    development: 'https://tic-tac-toe.wdibos.com',
+    production: 'https://tic-tac-toe.wdibos.com'
   }
 }
 
