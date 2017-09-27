@@ -2,16 +2,30 @@
 const playerX = 'x'
 const playerO = 'o'
 
-const currentPlayer = playerX
+let currentPlayer = playerX
+
+const game = ['', '', '', '', '', '', '', '', '']
 
 const playGame = function (event) {
   event.preventDefault()
+  const data = event.target
+  const id = data.id
+  if (game[id].length < 1) {
+    if (currentPlayer === playerX) {
+      $(data).text('X')
+      game[id] = 'X'
+      console.log(game)
+    } else if (currentPlayer === playerO) {
+      $(data).text('O')
+      game[id] = 'O'
+    }
+  } switchPlayer()
+}
+
+const switchPlayer = function () {
   if (currentPlayer === playerX) {
-    $(event.target).text('X')
-    console.log(event.target.id)
-  } else if (currentPlayer === playerO) {
-    $(event.target).text('O')
-  }
+    currentPlayer = playerO
+  } else currentPlayer = playerX
 }
 
 const addHandlers = function () {
