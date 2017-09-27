@@ -30,6 +30,7 @@ const switchPlayer = function () {
   if (currentPlayer === playerX) {
     currentPlayer = playerO
   } else currentPlayer = playerX
+  $('#whoseTurn').text('Player ' + currentPlayer + '\'s turn')
 }
 
 const checkForWinner = function () {
