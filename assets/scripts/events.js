@@ -1,6 +1,6 @@
 'use strict'
-const playerX = 'x'
-const playerO = 'o'
+const playerX = 'X'
+const playerO = 'O'
 let winner = ''
 
 let currentPlayer = playerX
