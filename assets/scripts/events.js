@@ -1,6 +1,7 @@
 'use strict'
 const playerX = 'x'
 const playerO = 'o'
+let winner = ''
 
 let currentPlayer = playerX
 
@@ -19,13 +20,57 @@ const playGame = function (event) {
       $(data).text('O')
       game[id] = 'O'
     }
-  } switchPlayer()
+  } checkForWinner()
+  switchPlayer()
 }
 
 const switchPlayer = function () {
   if (currentPlayer === playerX) {
     currentPlayer = playerO
   } else currentPlayer = playerX
+}
+
+const checkForWinner = function () {
+  switch (true) {
+    case (game[0] === game[1] && game[1] === game[2] && game[0] === game[2]):
+      winner = game[0]
+      console.log('Winner is ', winner)
+      break
+    case (game[3] === game[4] && game[4] === game[5] && game[3] === game[5] && game[3] !== ''):
+      winner = game[3]
+      console.log('Winner is ', winner)
+      break
+    case (game[6] === game[7] && game[7] === game[8] && game[6] === game[8] && game[6] !== ''):
+      winner = game[6]
+      console.log('Winner is ', winner)
+      break
+    case (game[0] === game[3] && game[3] === game[6] && game[0] === game[6] && game[3] !== ''):
+      winner = game[0]
+      console.log('Winner is ', winner)
+      break
+    case (game[1] === game[4] && game[4] === game[7] && game[1] === game[7] && game[1] !== ''):
+      winner = game[1]
+      console.log('Winner is ', winner)
+      break
+    case (game[2] === game[5] && game[5] === game[8] && game[2] === game[8] && game[2] !== ''):
+      winner = game[2]
+      console.log('Winner is ', winner)
+      break
+    case (game[0] === game[4] && game[4] === game[8] && game[0] === game[8] && game[0] !== ''):
+      winner = game[0]
+      console.log('Winner is ', winner)
+      break
+    case (game[2] === game[4] && game[4] === game[6] && game[2] === game[6] && game[2] !== ''):
+      winner = game[2]
+      console.log('Winner is ', winner)
+      break
+    case (!game.includes('')):
+      winner = false
+      console.log('Winner is ', winner)
+      break
+    default:
+      console.log('Keep Playing')
+  }
 }
 
 const addHandlers = function () {
