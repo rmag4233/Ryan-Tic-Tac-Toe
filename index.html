@@ -26,6 +26,8 @@
               <input type="password" name="credentials[password]" placeholder="Enter Password">
               <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
               <input type="submit" name="submit" value="Sign up!">
+              <br>
+              <br>
               <section id="messageContent"></section>
             </fieldset>
           </form>
@@ -41,6 +43,19 @@
               <section id="signInMessage"></section>
         </fieldset>
       </form>
+      <br>
+      <form id="change-password">
+        <fieldset>
+          <legend>Change Password:</legend>
+              <input type="password" name="passwords[old]" placeholder="Enter Password">
+              <input type="password" name="passwords[new]" placeholder="Enter New Password">
+              <input type="submit" name="submit" value="Change!">
+              <br>
+              <br>
+              <section id="passwordChange"></section>
+        </fieldset>
+      </form>
+      <br>
         <div class="game-board">
           <div class="square" id="0"></div>
           <div class="square" id="1"></div>
@@ -52,13 +67,16 @@
           <div class="square" id="7"></div>
           <div class="square" id="8"></div>
         </div>
-        <form id="play-again">
-                        <fieldset>
-                              <input type="submit" name="submit" value="Play again!">
-                              <section id="messageContent"></section>
-                        </fieldset>
-                      </form>
+        <br>
         <section id="whoseTurn"></section>
+        <br>
+        <br>
+        <form id="play-again">
+          <fieldset>
+            <input type="submit" name="submit" value="Play again!">
+            <section id="messageContent"></section>
+          </fieldset>
+        </form>
       </main>
     </body>
 </html>
