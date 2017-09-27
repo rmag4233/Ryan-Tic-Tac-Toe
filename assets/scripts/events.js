@@ -13,7 +13,6 @@ const playGame = function (event) {
   event.preventDefault()
   const data = event.target
   const id = data.id
-  console.log(store.user)
   if (store.user !== undefined) {
     if (winner === '') {
       if (game[id].length < 1) {
@@ -23,12 +22,14 @@ const playGame = function (event) {
         } else if (currentPlayer === playerO) {
           $(data).text('O')
           game[id] = 'O'
-        }
+        } checkForWinner()
+        switchPlayer()
+        $('#logIn').text('Good luck!')
+      } else if (game[id].length >= 1) {
+        $('#logIn').text('This square has already been played. Please try again!')
       }
     }
-  } console.log(game)
-  checkForWinner()
-  switchPlayer()
+  }
 }
 
 const switchPlayer = function () {
