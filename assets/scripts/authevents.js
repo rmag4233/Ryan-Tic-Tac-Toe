@@ -74,6 +74,18 @@ const onAddGame = function (event) {
     .catch(ui.onError)
 }
 
+const onGetOneGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data.game.id)
+  if (data.game.id.length !== 0) {
+    api.showOneGame(data)
+      .then(ui.onGetOneGameSuccess)
+      .catch(ui.onError)
+  } else {
+  }
+}
+
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -81,6 +93,7 @@ const authHandlers = function () {
   $('#sign-out').on('submit', onSignOut)
   $('#get-games').on('click', onGetGames)
   $('#add-game').on('submit', onAddGame)
+  $('#game-search').on('submit', onGetOneGame)
 }
 
 module.exports = {

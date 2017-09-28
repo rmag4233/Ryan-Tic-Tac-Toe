@@ -63,6 +63,10 @@ const onAddSuccess = function (games) {
   $('#contentAdd').text('Game ' + store.currentGame.game.id + ' has started. Player X starts!')
 }
 
+const onGetOneGameSuccess = function (data) {
+  console.log(data)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -74,5 +78,6 @@ module.exports = {
   signOutFailure,
   getGamesSuccess,
   onError,
-  onAddSuccess
+  onAddSuccess,
+  onGetOneGameSuccess
 }
