@@ -5,6 +5,7 @@ const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./store')
+// const events = require('./events')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
@@ -77,7 +78,7 @@ const onGetGames = function (event) {
 //   console.log(data.game.id)
 //   if (data.game.id.length !== 0) {
 //     api.showOneGame(data)
-//       .then(ui.onGetOneGameSuccess)
+//       .then(events.onGetOneGameSuccess)
 //       .catch(ui.onError)
 //   } else {
 //   }

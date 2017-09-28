@@ -1,4 +1,5 @@
 'use strict'
+const getFormFields = require(`../../lib/get-form-fields`)
 const store = require('./store')
 const api = require('./api')
 const ui = require('./ui')
@@ -145,11 +146,51 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+const onGetOneGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data.game.id)
+  if (data.game.id.length !== 0) {
+    api.showOneGame(data)
+      .then(onGetOneGameSuccess)
+      .catch(ui.onError)
+  } else {
+  }
+}
+
+const onGetOneGameSuccess = function (data) {
+  store.currentGame = data
+  store.retrieved = true
+  let count = 0
+  for (let i = 0; i <= 8; i++) {
+    game[i] = store.currentGame.game.cells[i]
+    $('#0').text(store.currentGame.game.cells[0])
+    $('#1').text(store.currentGame.game.cells[1])
+    $('#2').text(store.currentGame.game.cells[2])
+    $('#3').text(store.currentGame.game.cells[3])
+    $('#4').text(store.currentGame.game.cells[4])
+    $('#5').text(store.currentGame.game.cells[5])
+    $('#6').text(store.currentGame.game.cells[6])
+    $('#7').text(store.currentGame.game.cells[7])
+    $('#8').text(store.currentGame.game.cells[8])
+    if (store.currentGame.game.cells[i] === '') {
+      count++
+    }
+  }
+  if (count % 2 === 0) {
+    currentPlayer = playerO
+  } else {
+    currentPlayer = playerX
+  }
+  console.log(currentPlayer)
+}
+
 const addHandlers = function () {
   $('.square').on('click', playGame)
   $('#play-again').on('submit', playAgain)
   $('#add-game').on('submit', onAddGame)
   $('#sign-out').on('submit', onSignOut)
+  $('#game-search').on('submit', onGetOneGame)
 }
 
 module.exports = {

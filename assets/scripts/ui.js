@@ -1,7 +1,7 @@
 'use strict'
 
 const store = require('./store')
-const events = require('./events')
+// const events = require('./events')
 
 const signUpSuccess = function (data) {
   $('#messageContent').text('You have signed up as ' + data.user.email + '. Sign in to start playing!')
@@ -65,25 +65,6 @@ const onAddSuccess = function (games) {
   $('#contentAdd').text('Game ' + store.currentGame.game.id + ' has started. Player X starts!')
 }
 
-const onGetOneGameSuccess = function (data) {
-  store.currentGame = data
-  store.retrieved = true
-  console.log(store.retrieved)
-  for (let i = 0; i <= 8; i++) {
-    events.game[i] = store.currentGame.game.cells[i]
-    $('#0').text(store.currentGame.game.cells[0])
-    $('#1').text(store.currentGame.game.cells[1])
-    $('#2').text(store.currentGame.game.cells[2])
-    $('#3').text(store.currentGame.game.cells[3])
-    $('#4').text(store.currentGame.game.cells[4])
-    $('#5').text(store.currentGame.game.cells[5])
-    $('#6').text(store.currentGame.game.cells[6])
-    $('#7').text(store.currentGame.game.cells[7])
-    $('#8').text(store.currentGame.game.cells[8])
-  } store.retrievedGame = events.game
-  console.log(store.retrievedGame)
-}
-
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -95,6 +76,5 @@ module.exports = {
   signOutFailure,
   getGamesSuccess,
   onError,
-  onAddSuccess,
-  onGetOneGameSuccess
+  onAddSuccess
 }
