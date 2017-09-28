@@ -5,6 +5,7 @@ const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./store')
+const events = require('./events')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
@@ -63,6 +64,11 @@ const onAddGame = function (event) {
   // if (store.user === undefined || null) {
   //   $('#logIn').text('Please sign in to start a game.')
   // } else {
+  $('.square').text('')
+  events.game = ['', '', '', '', '', '', '', '', '']
+  events.winner = ''
+  events.over = false
+  events.currentPlayer = events.playerX
   api.startGame()
     .then(ui.onAddSuccess)
     .catch(ui.onError)

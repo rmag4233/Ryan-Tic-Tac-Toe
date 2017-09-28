@@ -112,7 +112,6 @@ const checkForWinner = function () {
 
 const playAgain = function (event) {
   event.preventDefault()
-  console.log('I think this is working')
   $('.square').text('')
   game = ['', '', '', '', '', '', '', '', '']
   winner = ''
