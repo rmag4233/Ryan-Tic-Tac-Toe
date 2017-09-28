@@ -58,12 +58,26 @@ const onGetGames = function () {
     })
 }
 
+const onAddGame = function (event) {
+  event.preventDefault()
+  api.startGame()
+    .then(ui.onAddSuccess)
+    .catch(ui.onError)
+    .then(function (games) {
+      console.log(games)
+      store.games = games
+      $('#contentAdd').text('Game ' + store.games.game.id + ' has started. Player X - it is your turn!')
+    })
+  // $('#contentAdd').text(store.game.id + 'has started. Player X, it\'s your turn!')
+}
+
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#get-games').on('click', onGetGames)
+  $('#add-game').on('submit', onAddGame)
 }
 
 module.exports = {

@@ -48,7 +48,8 @@ const signOutFailure = function (error) {
 
 const getGamesSuccess = function (games) {
   console.log('games success')
-  console.log('games are: ', games)
+  console.log('games are: ', store.games)
+  console.log(store.games)
 }
 
 const onError = function (error) {
