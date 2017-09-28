@@ -37,6 +37,7 @@ const changePasswordFailure = function (error) {
 const signOutSuccess = function () {
   console.log('Signed out successfully!')
   $('#signOut').text('You have been logged out')
+  $('#signInMessage').text('')
   store.user = null
   console.log(store.user)
 }

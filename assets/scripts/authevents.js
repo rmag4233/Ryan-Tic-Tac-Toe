@@ -43,13 +43,13 @@ const onChangePassword = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
+  $('#contentAdd').text('')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
 
 const onGetGames = function () {
-  console.log('IT WORKED!')
   api.getGames()
     .then(ui.getGamesSuccess)
     .catch(ui.onError)
@@ -60,15 +60,18 @@ const onGetGames = function () {
 
 const onAddGame = function (event) {
   event.preventDefault()
-  api.startGame()
-    .then(ui.onAddSuccess)
-    .catch(ui.onError)
-    .then(function (games) {
-      console.log(games)
-      store.games = games
-      $('#contentAdd').text('Game ' + store.games.game.id + ' has started. Player X - it is your turn!')
-    })
-  // $('#contentAdd').text(store.game.id + 'has started. Player X, it\'s your turn!')
+  if (store.user === undefined || null) {
+    $('#logIn').text('Please sign in to start a game.')
+  } else {
+    api.startGame()
+      .then(ui.onAddSuccess)
+      .catch(ui.onError)
+      .then(function (games) {
+        console.log(games)
+        store.games = games
+        $('#contentAdd').text('Game ' + store.games.game.id + ' has started. Player X - it is your turn!')
+      })
+  }
 }
 
 const authHandlers = function () {
