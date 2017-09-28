@@ -15,7 +15,7 @@ const signInSuccess = function (data) {
   console.log('Success!')
   console.log(data)
   $('#signInMessage').text('Signed in as ' + data.user.email)
-  $('#logIn').text('Good luck!')
+  $('#logIn').text('Start a new game or select existing game.')
   $('#signOut').text('')
   store.user = data.user
 }
@@ -49,11 +49,18 @@ const signOutFailure = function (error) {
 }
 
 const getGamesSuccess = function (games) {
-  console.log('games are: ', games)
+  store.games = games
+  console.log('games are: ', store.games)
 }
 
 const onError = function (error) {
   console.log('there was an error. It is ', error)
+}
+
+const onAddSuccess = function (games) {
+  $('#logIn').text('Good luck!')
+  store.currentGame = games
+  $('#contentAdd').text('Game ' + store.currentGame.game.id + ' has started. Player X starts!')
 }
 
 module.exports = {
@@ -66,5 +73,6 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   getGamesSuccess,
-  onError
+  onError,
+  onAddSuccess
 }

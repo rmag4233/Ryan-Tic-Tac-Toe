@@ -66,11 +66,6 @@ const onAddGame = function (event) {
   api.startGame()
     .then(ui.onAddSuccess)
     .catch(ui.onError)
-    .then(function (games) {
-      console.log(games)
-      store.games = games
-      $('#contentAdd').text('Game ' + store.games.game.id + ' has started. Player X starts!')
-    })
 }
 
 const authHandlers = function () {

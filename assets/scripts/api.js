@@ -63,7 +63,7 @@ const startGame = function () {
 
 const updateGame = function (id, text, over) {
   return $.ajax({
-    url: config.apiOrigin + '/games/' + store.games.game.id,
+    url: config.apiOrigin + '/games/' + store.currentGame.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

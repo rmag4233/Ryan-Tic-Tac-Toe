@@ -17,7 +17,7 @@ const playGame = function (event) {
   const data = event.target
   const id = data.id
   if (store.user !== undefined && store.user !== null) {
-    if (store.games !== undefined && store.games !== null) {
+    if (store.currentGame !== undefined && store.currentGame !== null) {
       if (winner === '') {
         if (game[id].length < 1) {
           if (currentPlayer === playerX) {
