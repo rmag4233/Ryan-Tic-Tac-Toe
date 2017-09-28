@@ -30,9 +30,9 @@ const playGame = function (event) {
             game[id] = 'O'
             text = $(event.target).text()
             console.log(text)
-          } api.updateGame(id, text)
-          checkForWinner()
+          } checkForWinner()
           switchPlayer()
+          api.updateGame(id, text, over)
           $('#logIn').text('Good luck!')
         } else if (game[id].length >= 1) {
           $('#logIn').text('This square has already been played. Please try again!')

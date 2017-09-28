@@ -61,22 +61,24 @@ const startGame = function () {
   })
 }
 
-// const updateGame = function (id, text) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/games/' + store.games.game.id,
-//     method: 'PATCH',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     // data: {
-//     //   "credentials": {
-//     //     "email": "'"${EMAIL}"'",
-//     //     "password": "'"${PASSWORD}"'",
-//     //     "password_confirmation": "'"${PASSWORD}"'"
-//     //   }
-//     }
-//   })
-// }
+const updateGame = function (id, text, over) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.games.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': id,
+          'value': text
+        },
+        'over': over
+      }
+    }
+  })
+}
 
 module.exports = {
   signUp,
@@ -84,5 +86,6 @@ module.exports = {
   changePassword,
   signOut,
   getGames,
-  startGame
+  startGame,
+  updateGame
 }

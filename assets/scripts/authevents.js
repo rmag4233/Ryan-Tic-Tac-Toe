@@ -55,7 +55,6 @@ const onGetGames = function (event) {
     .then(ui.getGamesSuccess)
     .catch(ui.onError)
     .then(function (games) {
-      console.log('Are there games ', games)
     })
 }
 
