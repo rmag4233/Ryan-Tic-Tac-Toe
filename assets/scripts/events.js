@@ -1,6 +1,7 @@
 'use strict'
 const store = require('./store')
 const api = require('./api')
+const ui = require('./ui')
 
 const playerX = 'X'
 const playerO = 'O'
@@ -24,12 +25,10 @@ const playGame = function (event) {
             $(data).text('X')
             game[id] = 'X'
             text = $(event.target).text()
-            console.log(text)
           } else if (currentPlayer === playerO) {
             $(data).text('O')
             game[id] = 'O'
             text = $(event.target).text()
-            console.log(text)
           } checkForWinner()
           switchPlayer()
           api.updateGame(id, text, over)
@@ -120,9 +119,22 @@ const playAgain = function (event) {
   console.log('Game is ', over)
 }
 
+const onAddGame = function (event) {
+  event.preventDefault()
+  $('.square').text('')
+  game = ['', '', '', '', '', '', '', '', '']
+  winner = ''
+  over = false
+  currentPlayer = playerX
+  api.startGame()
+    .then(ui.onAddSuccess)
+    .catch(ui.onError)
+}
+
 const addHandlers = function () {
   $('.square').on('click', playGame)
   $('#play-again').on('submit', playAgain)
+  $('#add-game').on('submit', onAddGame)
 }
 
 module.exports = {

@@ -5,7 +5,6 @@ const getFormFields = require(`../../lib/get-form-fields`)
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./store')
-const events = require('./events')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
@@ -59,33 +58,29 @@ const onGetGames = function (event) {
     })
 }
 
-const onAddGame = function (event) {
-  event.preventDefault()
-  // if (store.user === undefined || null) {
-  //   $('#logIn').text('Please sign in to start a game.')
-  // } else {
-  $('.square').text('')
-  events.game = ['', '', '', '', '', '', '', '', '']
-  events.winner = ''
-  events.over = false
-  events.currentPlayer = events.playerX
-  api.startGame()
-    .then(ui.onAddSuccess)
-    .catch(ui.onError)
-}
+// const onAddGame = function (event) {
+//   event.preventDefault()
+//   $('.square').text('')
+//   events.game = ['', '', '', '', '', '', '', '', '']
+//   events.winner = ''
+//   events.over = false
+//   events.currentPlayer = events.playerX
+//   api.startGame()
+//     .then(ui.onAddSuccess)
+//     .catch(ui.onError)
+// }
 
-const onGetOneGame = function (event) {
-  event.preventDefault()
-  events.game = ['', '', '', '', '', '', '', '', '']
-  const data = getFormFields(event.target)
-  console.log(data.game.id)
-  if (data.game.id.length !== 0) {
-    api.showOneGame(data)
-      .then(ui.onGetOneGameSuccess)
-      .catch(ui.onError)
-  } else {
-  }
-}
+// const onGetOneGame = function (event) {
+//   event.preventDefault()
+//   const data = getFormFields(event.target)
+//   console.log(data.game.id)
+//   if (data.game.id.length !== 0) {
+//     api.showOneGame(data)
+//       .then(ui.onGetOneGameSuccess)
+//       .catch(ui.onError)
+//   } else {
+//   }
+// }
 
 const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
@@ -93,8 +88,8 @@ const authHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
   $('#get-games').on('click', onGetGames)
-  $('#add-game').on('submit', onAddGame)
-  $('#game-search').on('submit', onGetOneGame)
+  // $('#add-game').on('submit', onAddGame)
+  // $('#game-search').on('submit', onGetOneGame)
 }
 
 module.exports = {
