@@ -61,6 +61,23 @@ const startGame = function () {
   })
 }
 
+// const updateGame = function (id, text) {
+//   return $.ajax({
+//     url: config.apiOrigin + '/games/' + store.games.game.id,
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     // data: {
+//     //   "credentials": {
+//     //     "email": "'"${EMAIL}"'",
+//     //     "password": "'"${PASSWORD}"'",
+//     //     "password_confirmation": "'"${PASSWORD}"'"
+//     //   }
+//     }
+//   })
+// }
+
 module.exports = {
   signUp,
   signIn,

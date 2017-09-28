@@ -50,7 +50,7 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
-const onGetGames = function () {
+const onGetGames = function (event) {
   api.getGames()
     .then(ui.getGamesSuccess)
     .catch(ui.onError)
