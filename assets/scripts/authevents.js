@@ -76,6 +76,7 @@ const onAddGame = function (event) {
 
 const onGetOneGame = function (event) {
   event.preventDefault()
+  events.game = ['', '', '', '', '', '', '', '', '']
   const data = getFormFields(event.target)
   console.log(data.game.id)
   if (data.game.id.length !== 0) {

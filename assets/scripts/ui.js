@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+const events = require('./events')
 
 const signUpSuccess = function (data) {
   $('#messageContent').text('You have signed up as ' + data.user.email + '. Sign in to start playing!')
@@ -64,7 +65,19 @@ const onAddSuccess = function (games) {
 }
 
 const onGetOneGameSuccess = function (data) {
-  console.log(data)
+  store.retrievedGame = data
+  for (let i = 0; i <= 8; i++) {
+    events.game[i] = store.retrievedGame.game.cells[i]
+    $('#0').text(store.retrievedGame.game.cells[0])
+    $('#1').text(store.retrievedGame.game.cells[1])
+    $('#2').text(store.retrievedGame.game.cells[2])
+    $('#3').text(store.retrievedGame.game.cells[3])
+    $('#4').text(store.retrievedGame.game.cells[4])
+    $('#5').text(store.retrievedGame.game.cells[5])
+    $('#6').text(store.retrievedGame.game.cells[6])
+    $('#7').text(store.retrievedGame.game.cells[7])
+    $('#8').text(store.retrievedGame.game.cells[8])
+  }
 }
 
 module.exports = {
