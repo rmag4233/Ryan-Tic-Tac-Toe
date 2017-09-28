@@ -13,20 +13,22 @@ const playGame = function (event) {
   event.preventDefault()
   const data = event.target
   const id = data.id
-  if (store.games !== undefined && store.games !== null) {
-    if (winner === '') {
-      if (game[id].length < 1) {
-        if (currentPlayer === playerX) {
-          $(data).text('X')
-          game[id] = 'X'
-        } else if (currentPlayer === playerO) {
-          $(data).text('O')
-          game[id] = 'O'
-        } checkForWinner()
-        switchPlayer()
-        $('#logIn').text('Good luck!')
-      } else if (game[id].length >= 1) {
-        $('#logIn').text('This square has already been played. Please try again!')
+  if (store.user !== undefined && store.user !== null) {
+    if (store.games !== undefined && store.games !== null) {
+      if (winner === '') {
+        if (game[id].length < 1) {
+          if (currentPlayer === playerX) {
+            $(data).text('X')
+            game[id] = 'X'
+          } else if (currentPlayer === playerO) {
+            $(data).text('O')
+            game[id] = 'O'
+          } checkForWinner()
+          switchPlayer()
+          $('#logIn').text('Good luck!')
+        } else if (game[id].length >= 1) {
+          $('#logIn').text('This square has already been played. Please try again!')
+        }
       }
     }
   }
