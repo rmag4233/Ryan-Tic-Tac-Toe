@@ -46,6 +46,15 @@ const signOutFailure = function (error) {
   $('#signOut').text('Please try again.')
 }
 
+const getGamesSuccess = function (games) {
+  console.log('games success')
+  console.log('games are: ', games)
+}
+
+const onError = function (error) {
+  console.log('there was an error. It is ', error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -54,6 +63,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
-
+  signOutFailure,
+  getGamesSuccess,
+  onError
 }
