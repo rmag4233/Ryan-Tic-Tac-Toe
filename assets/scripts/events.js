@@ -131,10 +131,25 @@ const onAddGame = function (event) {
     .catch(ui.onError)
 }
 
+const onSignOut = function (event) {
+  event.preventDefault()
+  $('#contentAdd').text('')
+  $('#logIn').text('Please sign in to play a game.')
+  $('.square').text('')
+  game = ['', '', '', '', '', '', '', '', '']
+  winner = ''
+  over = false
+  currentPlayer = playerX
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
 const addHandlers = function () {
   $('.square').on('click', playGame)
   $('#play-again').on('submit', playAgain)
   $('#add-game').on('submit', onAddGame)
+  $('#sign-out').on('submit', onSignOut)
 }
 
 module.exports = {

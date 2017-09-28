@@ -26,6 +26,7 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+  console.log(store.user)
   if (store.user === undefined || null) {
     $('#passwordChange').text('You must sign in before you can change your password.')
   } else if (data.passwords.old.length === 0) {
@@ -41,14 +42,14 @@ const onChangePassword = function (event) {
   }
 }
 
-const onSignOut = function (event) {
-  event.preventDefault()
-  $('#contentAdd').text('')
-  $('#logIn').text('Please sign in to play a game.')
-  api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
-}
+// const onSignOut = function (event) {
+//   event.preventDefault()
+//   $('#contentAdd').text('')
+//   $('#logIn').text('Please sign in to play a game.')
+//   api.signOut()
+//     .then(ui.signOutSuccess)
+//     .catch(ui.signOutFailure)
+// }
 
 const onGetGames = function (event) {
   api.getGames()
@@ -86,7 +87,7 @@ const authHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('submit', onSignOut)
+  // $('#sign-out').on('submit', onSignOut)
   $('#get-games').on('click', onGetGames)
   // $('#add-game').on('submit', onAddGame)
   // $('#game-search').on('submit', onGetOneGame)

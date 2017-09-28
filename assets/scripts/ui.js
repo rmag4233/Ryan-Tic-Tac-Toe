@@ -15,6 +15,7 @@ const signUpFailure = function (error) {
 const signInSuccess = function (data) {
   console.log('Success!')
   console.log(data)
+  $('#messageContent').text('')
   $('#signInMessage').text('Signed in as ' + data.user.email)
   $('#logIn').text('Start a new game or select existing game.')
   $('#signOut').text('')
