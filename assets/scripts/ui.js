@@ -12,7 +12,6 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (data) {
-  console.log('Success!')
   $('#messageContent').text('')
   $('#signInMessage').text('Signed in as ' + data.user.email)
   $('#logIn').text('Start a new game or select existing game.')
@@ -38,6 +37,8 @@ const changePasswordFailure = function () {
 }
 
 const signOutSuccess = function () {
+  store.user = null
+  store.currentGame = null
   $('#signOut').text('You have been logged out.')
   $('#signInMessage').text('')
   $('#change-password').hide()
@@ -48,7 +49,7 @@ const signOutSuccess = function () {
   $('#getStats').hide()
   $('#getStatsOver').hide()
   $('#getStatsNotOver').hide()
-  store.user = null
+  $('#whoseTurn').hide()
 }
 
 const signOutFailure = function () {
@@ -67,6 +68,9 @@ const getGamesSuccess = function (games) {
       gamesNotOver++
     }
   }
+  $('#getStats').show()
+  $('#getStatsOver').show()
+  $('#getStatsNotOver').show()
   $('#getStatsOver').text(gamesOver + ' completed games.')
   $('#getStatsNotOver').text(gamesNotOver + ' incomplete games.')
 }
