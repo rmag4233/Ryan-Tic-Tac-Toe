@@ -21,6 +21,8 @@ const signInSuccess = function (data) {
   $('#get-games').show()
   $('#add-game').show()
   $('#game-search').show()
+  $('#sign-up').hide()
+  $('#sign-in').hide()
   store.user = data.user
 }
 
@@ -51,6 +53,8 @@ const signOutSuccess = function () {
   $('#getStatsOver').hide()
   $('#getStatsNotOver').hide()
   $('#whoseTurn').hide()
+  $('#sign-up').show()
+  $('#sign-in').show()
 }
 
 const signOutFailure = function () {
