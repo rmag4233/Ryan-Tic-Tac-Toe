@@ -35,7 +35,7 @@ const playGame = function (event) {
           api.updateGame(id, text, over)
           $('#logIn').text('Good luck!')
         } else if (game[id].length >= 1) {
-          $('#logIn').text('This square has already been played. Please try again!')
+          $('#whoseTurn').text('This square has already been played. Please try again!')
         }
       }
     }
@@ -101,18 +101,10 @@ const checkForWinner = function () {
   }
 }
 
-const playAgain = function (event) {
-  event.preventDefault()
-  $('.square').text('')
-  game = ['', '', '', '', '', '', '', '', '']
-  winner = ''
-  over = false
-  currentPlayer = playerX
-}
-
 const onAddGame = function (event) {
   event.preventDefault()
   $('.square').text('')
+  $('#whoseTurn').text('Player X\'s turn')
   game = ['', '', '', '', '', '', '', '', '']
   winner = ''
   over = false
@@ -144,7 +136,8 @@ const onGetOneGame = function (event) {
       .then(onGetOneGameSuccess)
       .catch(ui.onError)
   } else {
-  }
+  } $('#game-id').val('')
+  $('#contentAdd').text('')
 }
 
 const onGetOneGameSuccess = function (data) {
@@ -170,13 +163,13 @@ const onGetOneGameSuccess = function (data) {
     currentPlayer = playerO
   } else {
     currentPlayer = playerX
-  }
+  } winner = ''
   checkForWinner()
+  $('#whoseTurn').text('Player ' + currentPlayer + '\'s turn')
 }
 
 const addHandlers = function () {
   $('.square').on('click', playGame)
-  $('#play-again').on('submit', playAgain)
   $('#add-game').on('submit', onAddGame)
   $('#sign-out').on('submit', onSignOut)
   $('#game-search').on('submit', onGetOneGame)

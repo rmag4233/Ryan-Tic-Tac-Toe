@@ -39,6 +39,7 @@ const changePasswordFailure = function () {
 const signOutSuccess = function () {
   store.user = null
   store.currentGame = null
+  store.retrieved = null
   $('#signOut').text('You have been logged out.')
   $('#signInMessage').text('')
   $('#change-password').hide()
