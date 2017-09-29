@@ -18,6 +18,11 @@ const signInSuccess = function (data) {
   $('#signInMessage').text('Signed in as ' + data.user.email)
   $('#logIn').text('Start a new game or select existing game.')
   $('#signOut').text('')
+  $('#change-password').show()
+  $('#sign-out').show()
+  $('#get-games').show()
+  $('#add-game').show()
+  $('#game-search').show()
   store.user = data.user
 }
 
@@ -38,6 +43,14 @@ const changePasswordFailure = function (error) {
 const signOutSuccess = function () {
   $('#signOut').text('You have been logged out.')
   $('#signInMessage').text('')
+  $('#change-password').hide()
+  $('#get-games').hide()
+  $('#add-game').hide()
+  $('#game-search').hide()
+  $('#sign-out').hide()
+  $('#getStats').hide()
+  $('#getStatsOver').hide()
+  $('#getStatsNotOver').hide()
   store.user = null
 }
 
