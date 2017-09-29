@@ -138,6 +138,7 @@ const onGetOneGame = function (event) {
   } else {
   } $('#game-id').val('')
   $('#contentAdd').text('')
+  $('#getGame').text('Please enter in a game ID.')
 }
 
 const onGetOneGameSuccess = function (data) {
@@ -164,8 +165,9 @@ const onGetOneGameSuccess = function (data) {
   } else {
     currentPlayer = playerX
   } winner = ''
-  checkForWinner()
   $('#whoseTurn').text('Player ' + currentPlayer + '\'s turn')
+  checkForWinner()
+  $('#getGame').text('')
 }
 
 const addHandlers = function () {
