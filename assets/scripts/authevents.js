@@ -34,6 +34,8 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
+  $('#changeOld').val('')
+  $('#changeNew').val('')
   if (store.user === undefined || null) {
     $('#passwordChange').text('You must sign in before you can change your password.')
   } else if (data.passwords.old.length === 0) {

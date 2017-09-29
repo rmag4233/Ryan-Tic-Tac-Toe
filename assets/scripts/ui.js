@@ -7,9 +7,8 @@ const signUpSuccess = function (data) {
   $('#messageContent').text('You have signed up as ' + data.user.email + '. Sign in to start playing!')
 }
 
-const signUpFailure = function (error) {
+const signUpFailure = function () {
   $('#messageContent').text('This user may already exist. Please try again.')
-  console.error(error)
 }
 
 const signInSuccess = function (data) {
@@ -26,8 +25,7 @@ const signInSuccess = function (data) {
   store.user = data.user
 }
 
-const signInFailure = function (error) {
-  console.error(error)
+const signInFailure = function () {
   $('#signInMessage').text('Please try signing in with a registered email and password.')
 }
 
@@ -35,8 +33,7 @@ const changePasswordSuccess = function () {
   $('#passwordChange').text('Password has been successfully updated.')
 }
 
-const changePasswordFailure = function (error) {
-  console.error(error)
+const changePasswordFailure = function () {
   $('#passwordChange').text('Please try again.')
 }
 
@@ -74,9 +71,8 @@ const getGamesSuccess = function (games) {
   $('#getStatsNotOver').text(gamesNotOver + ' incomplete games.')
 }
 
-const onError = function (error) {
+const onError = function () {
   $('#getGame').text('There was an error - please try again.')
-  console.log('there was an error. It is ', error)
 }
 
 const onAddSuccess = function (games) {
