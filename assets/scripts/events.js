@@ -182,7 +182,7 @@ const onGetOneGameSuccess = function (data) {
   } else {
     currentPlayer = playerX
   }
-  console.log(currentPlayer)
+  checkForWinner()
 }
 
 const addHandlers = function () {
