@@ -57,48 +57,40 @@ const checkForWinner = function () {
       winner = game[0]
       over = true
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', over)
       break
     case (game[3] === game[4] && game[4] === game[5] && game[3] === game[5] && game[3] !== ''):
       winner = game[3]
       over = true
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', winner)
       break
     case (game[6] === game[7] && game[7] === game[8] && game[6] === game[8] && game[6] !== ''):
       winner = game[6]
       over = true
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', winner)
       break
     case (game[0] === game[3] && game[3] === game[6] && game[0] === game[6] && game[3] !== ''):
       winner = game[0]
       over = true
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', winner)
       break
     case (game[1] === game[4] && game[4] === game[7] && game[1] === game[7] && game[1] !== ''):
       winner = game[1]
       over = true
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', winner)
       break
     case (game[2] === game[5] && game[5] === game[8] && game[2] === game[8] && game[2] !== ''):
       winner = game[2]
       over = true
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', winner)
       break
     case (game[0] === game[4] && game[4] === game[8] && game[0] === game[8] && game[0] !== ''):
       winner = game[0]
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', winner)
       break
     case (game[2] === game[4] && game[4] === game[6] && game[2] === game[6] && game[2] !== ''):
       winner = game[2]
       over = true
       $('#whoseTurn').text('Congratulations to Player ' + winner + '! You are the winner!!')
-      console.log('Winner is ', winner)
       break
     case (!game.includes('')):
       winner = false
@@ -106,7 +98,6 @@ const checkForWinner = function () {
       $('#whoseTurn').text('This game ended in a draw. Play again?')
       break
     default:
-      console.log('Keep Playing')
   }
 }
 
@@ -117,7 +108,6 @@ const playAgain = function (event) {
   winner = ''
   over = false
   currentPlayer = playerX
-  console.log('Game is ', over)
 }
 
 const onAddGame = function (event) {
@@ -149,7 +139,6 @@ const onSignOut = function (event) {
 const onGetOneGame = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data.game.id)
   if (data.game.id.length !== 0) {
     api.showOneGame(data)
       .then(onGetOneGameSuccess)
