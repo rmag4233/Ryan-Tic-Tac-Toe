@@ -1,61 +1,37 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# browser-template
+# About The Game
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+This is a web-based take on the classic game - tic-tac-toe. The game requires a user to sign up and sign in before being able to start a game. The site connects to a an api that stores both user information and game state, allowing user to view their stats (including games played, games completed and games that are started but not complete) as well as retrieve and play games that they had previously started without finishing.
 
-## Installation
 
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory.
-1.  Empty [`README.md`](README.md) and fill with your own content.
-1.  Replace all instances of `ga-wdi-boston.browser-template` with the name of your project.
-1.  Move into the new project and `git init`
-1.  Add all of the files in your project with the command `git add -A`
-  -   *Note:* THIS IS THE ONLY TIME YOU SHOULD RUN THIS COMMAND
-1.  Commit all of your files with the command `git commit`
-  -   Your commit title should read `Initial commit`
-1.  Install dependencies with `npm install`.
 
-## Structure
+## Technologies Used
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+1. HTML5
+2. CSS3
+3. JavaScript
+4. jQuery/DOM manipulation
+5. ajax requests to an api
 
-Developers should set `config.apiOrigins.production` (and
-`config.apiOrigins.development` if it differs from the default).  With
-`apiOrigins` set, developers may rely on `config.apiOrigin` as the base for API
-URLs.
+## Planning Phase
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss).
+The planning phase of this game started when I found out that the first project would be a tic-tac-toe game. Immediately, I started thinking about how the subjects covered in class could apply to solving the problem of creating an interactive tic-tac-toe game. My approach was to start small, understanding that despite the seemingly simple nature of the task at hand, there could be gotchas along the way. Fortunately, through wire framing and writing user stories, I was able to develop a strategy for how to start the game. First, I would create a very basic HTML structure so that I could test my functionality in browser, with minimal styling. I would build my game board, consisting of 9 div elements with unique ID names, so that I could easily keep track of the state of each element by assigning a click event handler to their HTML class. I knew that on the backend I would be creating an empty array to represent the state of the game, with pushes taking place on each valid click. From there, I knew I would need variables to store the current player, playerX, playerO, whether or not there was a winner or if the game was over and functions to play the game, check for a winner and switch the player. From there, constant testing allowed me to get the site in working order with no known user facing issues.
 
-Developers should use [getFormFields](forms.md) to retrieve form data to send to
-an API.
+I am most proud of an extra feature I added which allows users to recall games that they have previously started and continue to play it. Parsing the JSON to reconfigure the board was relatively simple, but it took some creativity for me to determine who the current player should be on a retrieved game. While the api stored the state of the game and whether or not it was over, it did not store who the current player was. So, what I did was loop through the retrieved game array, count how many empty spaces there were (determined by the value empty string value in the array) and ran a modulo operator to determine if the count of empty strings was odd or even. If it was odd, the current player would be X (or whomever the first player was) and if it was even, the current player would be o (or whomever the second player was).
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+## Wireframes and User Stories
 
-## Tasks
+Wireframe - https://imgur.com/a/gMYwy
+User Stories - https://git.generalassemb.ly/rmag4233/game-project-scope-study/blob/response/study.md
+  As a non registered user I want to be able to register to the app so that I can play tic tac toe
+  As a registered user I want to be able to sign in to the app so that I can play tic tac toe
+  As a registered user I want to be able to access existing games that are not finished so that I can keep playing tic tac toe
+  As a registered user I want to know whose turn it is in game so that I know when it's my turn to play
+  As a registered user I want to be able to add my player's value (x or o) to the board so that I can play tic tac toe
+  As a registered user I want to be able to log out so that I can save the state of my game
+  As a registered user I want to be able to see the outcome of a finished game so that I can see who won or if it was a draw.
 
-Developers should run these often!
+## Future Iterations
 
--   `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
--   `grunt make-standard`: reformats all your code in the JavaScript Standard Style
--   `grunt <server|serve|s>`: generates bundles, watches, and livereloads
--   `grunt test`: runs any automated tests, depends on `grunt build`
--   `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-
-## [License](LICENSE)
-
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+In future iterations of this project, I would like to make the UI sharper and utilize more of the bootstrap functionality available. Additionally, at this point the feature to retrieve a game is useful if you happen to remember the game ID (which is shown to you upon creation of a game) - in the future, I would like to make a clean UI section that allows the user to retrieve their unfinished games.
