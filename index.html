@@ -22,21 +22,21 @@
         <form id="sign-up">
           <fieldset>
             <legend>Sign up!</legend>
-              <input type="text" name="credentials[email]" placeholder="Enter Email">
-              <input type="password" name="credentials[password]" placeholder="Enter Password">
-              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="text" name="credentials[email]" placeholder="Enter Email" required id=signUpEmail>
+              <input type="password" name="credentials[password]" placeholder="Enter Password" required id=signUpPassword>
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required id=signUpPasswordConf>
               <input type="submit" name="submit" value="Sign up!">
               <br>
               <br>
-              <section id="messageContent"></section>
             </fieldset>
           </form>
+          <section id="messageContent"></section>
           <br>
       <form id="sign-in">
         <fieldset>
           <legend>Sign in!</legend>
-              <input type="text" name="credentials[email]" placeholder="Enter Email">
-              <input type="password" name="credentials[password]" placeholder="Enter Password">
+              <input type="text" name="credentials[email]" placeholder="Enter Email" required id=signInEmail>
+              <input type="password" name="credentials[password]" placeholder="Enter Password" required id=signInPassword>
               <input type="submit" name="submit" value="Sign in!">
               <br>
               <br>
@@ -79,6 +79,7 @@
         <section id="getStats"></section>
         <section id="getStatsOver"></section>
         <section id="getStatsNotOver"></section>
+        <br>
         <form id="change-password" style="display: none">
           <fieldset>
             <legend>Change Password:</legend>

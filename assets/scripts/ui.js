@@ -8,7 +8,7 @@ const signUpSuccess = function (data) {
 }
 
 const signUpFailure = function (error) {
-  $('#messageContent').text('Please try again.')
+  $('#messageContent').text('This user may already exist. Please try again.')
   console.error(error)
 }
 

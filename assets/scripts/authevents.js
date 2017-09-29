@@ -1,24 +1,31 @@
 'use strict'
 
 const getFormFields = require(`../../lib/get-form-fields`)
-
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./store')
-// const events = require('./events')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  api.signUp(data)
-    .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
+  if (data.credentials.password !== data.credentials.password_confirmation) {
+    $('#messageContent').text('Password and password confirmation do not match.')
+  } else {
+    $('#signUpEmail').val('')
+    $('#signUpPassword').val('')
+    $('#signUpPasswordConf').val('')
+    api.signUp(data)
+      .then(ui.signUpSuccess)
+      .catch(ui.signUpFailure)
+  }
 }
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   $('#passwordChange').text('')
+  $('#signInEmail').val('')
+  $('#signInPassword').val('')
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -27,7 +34,6 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(store.user)
   if (store.user === undefined || null) {
     $('#passwordChange').text('You must sign in before you can change your password.')
   } else if (data.passwords.old.length === 0) {
