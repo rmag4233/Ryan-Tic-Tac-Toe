@@ -84,6 +84,7 @@ const onAddSuccess = function (games) {
   $('#logIn').text('Good luck!')
   store.currentGame = games
   $('#contentAdd').text('Game ' + store.currentGame.game.id + ' has started. Player X starts!')
+  $('#whoseTurn').show()
 }
 
 module.exports = {
