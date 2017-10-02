@@ -23,6 +23,7 @@ const signInSuccess = function (data) {
   $('#game-search').show()
   $('#sign-up').hide()
   $('#sign-in').hide()
+  $('#getGame').text('')
   store.user = data.user
 }
 
