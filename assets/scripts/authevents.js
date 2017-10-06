@@ -83,7 +83,6 @@ const onGetGames = function (event) {
 // const onGetOneGame = function (event) {
 //   event.preventDefault()
 //   const data = getFormFields(event.target)
-//   console.log(data.game.id)
 //   if (data.game.id.length !== 0) {
 //     api.showOneGame(data)
 //       .then(events.onGetOneGameSuccess)
