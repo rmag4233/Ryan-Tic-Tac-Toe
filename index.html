@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Ryan's Tic Tac Toe Game</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <div class="wrapper">
+        <header>
+          <h1>Ryan's Tic Tac Toe Game</h1>
+        </header>
+      </div>
+      <main>
+        <h1>Sign Up To Play!</h1>
+        <form id="sign-up">
+          <fieldset>
+            <legend>Sign up!</legend>
+              <input type="text" name="credentials[email]" placeholder="Enter Email" required id=signUpEmail>
+              <input type="password" name="credentials[password]" placeholder="Enter Password" required id=signUpPassword>
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required id=signUpPasswordConf>
+              <input type="submit" name="submit" value="Sign up!">
+              <br>
+              <br>
+            </fieldset>
+          </form>
+          <section id="messageContent"></section>
+          <br>
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+              <input type="text" name="credentials[email]" placeholder="Enter Email" required id=signInEmail>
+              <input type="password" name="credentials[password]" placeholder="Enter Password" required id=signInPassword>
+              <input type="submit" name="submit" value="Sign in!">
+              <br>
+              <br>
+              <section id="signInMessage"></section>
+        </fieldset>
+      </form>
+      <br>
+      <section id="signOut"></section>
+        <form class="games" id="add-game" style="display: none">
+          <h2>Start A Game</h2>
+          <button type="submit" class="btn btn-default">Start A Game</button>
+        </form>
+        <br>
+        <section id="contentAdd"></section>
+        <br>
+        <section id="logIn"></section>
+        <form class="games" id="game-search" style="display: none">
+          <h2>Play Existing Game</h2>
+          <div class="form-group">
+            <input type="text" name="game[id]" id="game-id" placeholder="Game ID Here">
+          </div>
+          <button type="submit" class="btn btn-default">Get Game</button>
+          <section id="getGame"></section>
+        </form>
+        <br>
+        <section id="whoseTurn"></section>
+        <br>
+        <div class="game-board">
+          <div class="square" id="0"></div>
+          <div class="square" id="1"></div>
+          <div class="square" id="2"></div>
+          <div class="square" id="3"></div>
+          <div class="square" id="4"></div>
+          <div class="square" id="5"></div>
+          <div class="square" id="6"></div>
+          <div class="square" id="7"></div>
+          <div class="square" id="8"></div>
+        </div>
+        <button id="get-games" style="display: none">My Stats</button>
+        <section id="getStats"></section>
+        <section id="getStatsOver"></section>
+        <section id="getStatsNotOver"></section>
+        <br>
+        <form id="change-password" style="display: none">
+          <fieldset>
+            <legend>Change Password:</legend>
+                <input type="password" name="passwords[old]" placeholder="Enter Password" id="changeOld">
+                <input type="password" name="passwords[new]" placeholder="Enter New Password" id="changeNew">
+                <input type="submit" name="submit" value="Change!">
+                <br>
+                <br>
+                <section id="passwordChange"></section>
+          </fieldset>
+        </form>
+        <br>
+        <form id="sign-out" style="display: none">
+          <fieldset>
+            <legend>Sign Out:</legend>
+                <input type="submit" name="submit" value="Sign Out!">
+                <br>
+                <br>
+                <section id="signOut"></section>
+          </fieldset>
+        </form>
+      </main>
+    </body>
+</html>
